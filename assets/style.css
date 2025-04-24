@@ -141,6 +141,22 @@ body {
     color: #079A82;
 }
 
+.value-filter{
+    display: inline;
+    font-family: "Lato", sans-serif;
+    color: #079A82;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.name-filter{
+    display: inline;
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+
 .menu-filter-title {
     margin-bottom: 20px;
     font-weight: bold;
@@ -151,7 +167,7 @@ body {
 .card-title{
     font-size: 24px;
     font-family: "Lato", sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     color: #079A82;
     font-weight: bold;
 }

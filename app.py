@@ -346,17 +346,17 @@ def update_tadles(department_type, job_role_type, attrition_value):
     Input("job-role-filter", "value"),
     Input("attrition-checklist", "value"),
 )
-def update_cards(dept, role, attr):
+def update_cards(deptepartment_type, role_type, attr_type):
     filtered_df = data.copy()
     
-    if dept and isinstance(dept, str): dept = [dept]  
-    if role and isinstance(role, str): role = [role]
-    if attr and isinstance(attr, str): attr = [attr]
-    
-    if dept is None: dept = []
-    if role is None: role = []
-    if attr is None: attr = []
+    dept = []
+    role = []
+    attr = []
 
+    if deptepartment_type and isinstance(deptepartment_type, str): dept = [deptepartment_type]  
+    if role_type and isinstance(role_type, str): role = [role_type]
+    if attr_type and isinstance(attr_type, str): attr = [attr_type]
+    
     if dept:
         filtered_df = filtered_df[filtered_df["Department"].isin(dept)]
     if role:
@@ -390,6 +390,15 @@ def update_cards(dept, role, attr):
             )
     
     return [
+        html.Div([
+            html.P(f"Department:", className='name-filter'),
+            html.P(deptepartment_type, className="value-filter"),
+            html.P("Job Role:", className='name-filter'), 
+            html.P(role_type, className="value-filter"),
+            html.P("Attrition:", className="name-filter"),
+            html.P(attr_type, className="value-filter"),
+            ]
+        ),
         make_card("Average income", mean_income, "$"),
         make_card("Average age", mean_age, ''),
         make_card("Work experience", mean_years, ''),
@@ -398,7 +407,7 @@ def update_cards(dept, role, attr):
         make_card("Average years with the company", mean_years_at_company, ''),
         make_card("Number of employees", count, ''),
         make_card("Employee attrition", yes_percentage, '%'),
-        make_card("Standart working hours", 80, "")
+        make_card("Standart working hours", 80, ""), 
     ]
 
 if __name__=="__main__":
