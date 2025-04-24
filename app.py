@@ -1,16 +1,11 @@
 import dash
-from dash import dcc
-from dash import html
-import plotly.express as px
+from dash import html, dcc
 import pandas as pd
 import numpy as np
 import io
 from dash.dependencies import Output, Input, State
 from dash import dash_table, ctx
-#import dash_bootstrap_components as dbc
 
-data = pd.read_csv("data/WA_Fn-UseC_-HR-Employee-Attrition.csv")
-data.Education = data.Education.astype(str)
 
 external_stylesheets = [
     {
@@ -22,6 +17,9 @@ external_stylesheets = [
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.title = "IBM HR Analytics"
 
+
+data = pd.read_csv("data/WA_Fn-UseC_-HR-Employee-Attrition.csv")
+data.Education = data.Education.astype(str)
 numeric_cols = data.select_dtypes(include='number').columns
 education_map = {'1':'Below College', '2': 'College', '3': 'Bachelor', '4': 'Master', '5': 'Doctor'}
 overall_colums = {
